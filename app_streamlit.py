@@ -1,3 +1,4 @@
+
 # app_streamlit.py
 from pathlib import Path
 import asyncio
@@ -455,6 +456,26 @@ if API_visible:
         st.dataframe(perf, use_container_width=True)
         st.line_chart(perf, x="ts", y="latency_ms", color="provider")
         st.line_chart(perf, x="ts", y="bytes", color="provider")
+        
+
+# --- OMDb usage summary (requests per day) ---
+        if not perf.empty:
+    # Ensure ts is a proper datetime column
+            if not pd.api.types.is_datetime64_any_dtype(perf["ts"]):
+                perf["ts"] = pd.to_datetime(perf["ts"], errors="coerce", utc=True)
+
+            perf["ts_date"] = perf["ts"].dt.date
+
+            omdb_daily = (
+                perf[perf["provider"] == "omdb"]
+                .groupby("ts_date")
+                .size()
+                .reset_index(name="requests")
+                .sort_values("ts_date", ascending=False)
+            )
+
+            st.markdown("#### OMDb usage (requests per day)")
+            st.dataframe(omdb_daily.head(7), use_container_width=True)
     else:
         st.info("No performance logs yet. They’re created when you fetch data.")
 
