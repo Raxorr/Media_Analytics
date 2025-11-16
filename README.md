@@ -2,7 +2,7 @@
 
 This project is a Streamlit-based web application that aggregates trending movie and TV data using the TMDB and OMDB APIs. It provides a unified view of popularity trends, ratings, streaming availability, metadata, and visual insights. The dashboard supports both dark and light themes, includes configurable filters, and is fully containerized using Docker.
 
-Live demo: [*Add your Streamlit Cloud link here*](https://mediaanalytics-4xa4fxxeqhajnetj6swkgs.streamlit.app/)
+[*Live Demo*](https://mediaanalytics-4xa4fxxeqhajnetj6swkgs.streamlit.app/)
 
 ---
 
