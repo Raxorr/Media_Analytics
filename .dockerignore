@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.parquet
+*.csv
+
+.env
+.env.*     # any env variants
+
+data/
+.streamlit/
+.git
+.gitignore
+.vscode/
+.idea/
